@@ -1,0 +1,23 @@
+{
+  "name": "collectamapi",
+  "version": "1.0.0",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npm start",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesseIkolo/Collectam-Plateform.git"
+  },
+  "author": "Jesse Ikolo, Philippe Nkomha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JesseIkolo/Collectam-Plateform/issues"
+  },
+  "homepage": "https://github.com/JesseIkolo/Collectam-Plateform#readme",
+  "description": ""
+}

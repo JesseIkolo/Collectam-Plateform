@@ -1,0 +1,111 @@
+// Side nav styles for large screens
+@media (min-width: 961px) {
+  .cds--side-nav {
+    position: fixed !important;
+    top: 3rem; // Height of header
+    left: 0 !important;
+    width: 256px !important;
+    height: calc(100vh - 3rem) !important;
+    z-index: 6000 !important;
+    transform: translateX(0) !important;
+    transition: transform 0.11s ease;
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: flex !important;
+    background-color: #ffffff !important;
+    border-right: 1px solid #e0e0e0 !important;
+
+    .cds--side-nav__items {
+      width: 100% !important;
+      display: block !important;
+      visibility: visible !important;
+    }
+
+    .cds--side-nav__link {
+      display: flex !important;
+      visibility: visible !important;
+    }
+
+    &.cds--side-nav--expanded {
+      transform: translateX(0) !important;
+    }
+
+    &:not(.cds--side-nav--expanded) {
+      transform: translateX(0) !important;
+    }
+  }
+
+  // Ensure header menu button is hidden on large screens
+  .cds--header__menu-button {
+    display: none !important;
+  }
+
+  // Adjust header name position when side nav is persistent
+  .cds--header__name {
+    margin-left: 0;
+  }
+
+  // Force body content to adjust
+  .cds--content {
+    margin-left: 256px !important;
+  }
+}
+
+.cds--side-nav {
+  .cds--side-nav__items {
+    // Style pour la section principale
+    .cds--side-nav__link {
+      &:hover {
+        background-color: #f4f4f4;
+      }
+
+      &.cds--side-nav__link--current {
+        background-color: #e0e0e0;
+        border-right: 3px solid #0f62fe;
+      }
+    }
+
+    // Style pour le séparateur
+    .cds--header-side-nav-items {
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    // Section du bas - styles différents pour distinguer
+    .cds--side-nav__link:last-child,
+    .cds--side-nav__link:nth-last-child(2),
+    .cds--side-nav__link:nth-last-child(3) {
+      color: #6f6f6f;
+      border-top: 1px solid #e0e0e0;
+      margin: 8px 0;
+      padding: 16px 16px 0;
+
+      &:hover {
+        background-color: #f4f4f4;
+        color: #161616;
+      }
+    }
+
+    // Style spécial pour le lien de déconnexion
+    .cds--side-nav__link:last-child {
+      margin-top: 8px;
+
+      &:hover {
+        background-color: #ffebee;
+        color: #d32f2f;
+      }
+    }
+  }
+}
+
+// Responsive pour mobile
+@media (max-width: 768px) {
+  .cds--side-nav {
+    .cds--side-nav__items {
+      .cds--side-nav__link {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

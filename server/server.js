@@ -10,7 +10,7 @@ const rateLimit = require('express-rate-limit');
 const fs = require('fs');
 
 // Charger les variables d'environnement
-dotenv.config({ path: path.join(__dirname, 'config', '.env') });
+dotenv.config();
 
 const app = express();
 

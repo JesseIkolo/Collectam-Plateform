@@ -50,6 +50,12 @@ const userSchema = new mongoose.Schema({
         maxlength: 30,
         match: [/^[a-zA-Z0-9_.-]+$/, 'Nom d\'utilisateur invalide'],
     },
+    type: {
+        type: String,
+        enum: ['domestique', 'entreprise'],
+        required: true,
+        default: 'domestique',
+    },
 }, { timestamps: true });
 
 // Hash du mot de passe avant sauvegarde

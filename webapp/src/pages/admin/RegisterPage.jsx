@@ -9,6 +9,7 @@ import {
   Button,
   Link,
   Heading,
+  Select,
 } from "@carbon/react";
 import { ArrowRight } from "@carbon/icons-react";
 import "./RegisterPage.scss";
@@ -20,6 +21,8 @@ export default function RegisterPage() {
     email: "",
     password: "",
     confirmPassword: "",
+    countryCode: "+225",
+    phone: "",
   });
 
   const handleChange = (field) => (e) => {
@@ -87,6 +90,35 @@ export default function RegisterPage() {
                     onChange={handleChange("email")}
                     className="form-input"
                   />
+                </FormGroup>
+
+                {/* Champ téléphone avec select indicatif pays */}
+                <FormGroup legendText="">
+                  <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-end' }}>
+                    <Select
+                      id="countryCode"
+                      labelText="Indicatif"
+                      value={formData.countryCode}
+                      onChange={handleChange("countryCode")}
+                      style={{ maxWidth: 110 }}
+                    >
+                      <option value="+225">🇨🇮 +225</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+237">🇨🇲 +237</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      {/* Ajoute d'autres indicatifs si besoin */}
+                    </Select>
+                    <TextInput
+                      id="phone"
+                      labelText="Phone number"
+                      placeholder="Enter your phone number"
+                      value={formData.phone}
+                      onChange={handleChange("phone")}
+                      className="form-input"
+                      style={{ flex: 1 }}
+                    />
+                  </div>
                 </FormGroup>
 
                 <FormGroup legendText="">

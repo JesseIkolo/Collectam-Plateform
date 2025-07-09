@@ -1,21 +1,23 @@
+import "./index.scss";
+
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import DashboardHome from "./pages/DashboardHome";
-import AboutPage from "./pages/AboutPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import UsagersPage from "./pages/UsagersPage";
-import CollecteursPage from "./pages/CollecteursPage";
-import MissionsPage from "./pages/MissionsPage";
-import VehiculesPage from "./pages/VehiculesPage";
-import SignalementsPage from "./pages/SignalementsPage";
-import CartePage from "./pages/CartePage";
-import PointsCollectePage from "./pages/PointsCollectePage";
-import DechetsPage from "./pages/DechetsPage";
-import NotificationsPage from "./pages/NotificationsPage";
-import LanguesPage from "./pages/LanguesPage";
-import AdministrationPage from "./pages/AdministrationPage";
+import DashboardHome from "./pages/admin/DashboardHome";
+import AboutPage from "./pages/admin/AboutPage";
+import LoginPage from "./pages/admin/LoginPage";
+import RegisterPage from "./pages/admin/RegisterPage";
+import UsagersPage from "./pages/admin/UsagersPage";
+import CollecteursPage from "./pages/admin/CollecteursPage";
+import MissionsPage from "./pages/admin/MissionsPage";
+import VehiculesPage from "./pages/admin/VehiculesPage";
+import SignalementsPage from "./pages/admin/SignalementsPage";
+import CartePage from "./pages/admin/CartePage";
+import PointsCollectePage from "./pages/admin/PointsCollectePage";
+import DechetsPage from "./pages/admin/DechetsPage";
+import NotificationsPage from "./pages/admin/NotificationsPage";
+import LanguesPage from "./pages/admin/LanguesPage";
+import AdministrationPage from "./pages/admin/AdministrationPage";
 
 export default function App() {
   return (
@@ -23,7 +25,7 @@ export default function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route
-        path="/*"
+        path="/admin/*"
         element={
           <Layout>
             <Routes>

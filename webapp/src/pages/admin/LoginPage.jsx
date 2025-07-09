@@ -74,7 +74,7 @@ export default function LoginPage() {
               </Form>
 
               <div className="alternative-logins">
-                <p className="alt-login-title">Alternative logins</p>
+                <p className="alt-login-title">Alternativeffffff logins</p>
                 <Button
                   kind="ghost"
                   size="lg"

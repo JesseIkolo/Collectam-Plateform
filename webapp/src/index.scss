@@ -1,7 +1,7 @@
-@use "@carbon/react" with (
-  $font-path: "@ibm/plex"
-);
+@use '@carbon/styles';
+
 @import "./styles/pages.scss";
+
 
 /* Hide SideNav on desktop (wider than 1056px, Carbon 'lg' breakpoint) */
 @media (min-width: 1056px) {

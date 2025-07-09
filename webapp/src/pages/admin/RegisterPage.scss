@@ -1,0 +1,56 @@
+@import "./LoginPage.scss";
+
+.register-page {
+  @extend .login-page;
+
+  .register-container {
+    @extend .login-container;
+  }
+}
+
+.register-form-section {
+  @extend .login-form-section;
+
+  .register-form-wrapper {
+    @extend .login-form-wrapper;
+  }
+
+  .form-content {
+    .register-title {
+      @extend .login-title;
+    }
+
+    .register-subtitle {
+      @extend .login-subtitle;
+
+      .signin-link {
+        @extend .signup-link;
+      }
+    }
+
+    .register-form {
+      @extend .login-form;
+
+      .name-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .create-account-button {
+        @extend .continue-button;
+      }
+    }
+  }
+}
+
+// Mobile responsive for name fields
+@media (max-width: 768px) {
+  .register-form {
+    .name-fields {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+}

@@ -13,6 +13,8 @@ router.use('/wastepoints', require('./wastePointRoutes'));
 router.use('/maps', require('./mapRoutes'));
 // Matching intelligent
 router.use('/matching', require('./matchingRoutes'));
+// Waiting list
+router.use('/waiting-list', require('./waitingUserRoutes'));
 
 // TODO: Ajouter d'autres routes (collecte, missions, véhicules, etc.)
 

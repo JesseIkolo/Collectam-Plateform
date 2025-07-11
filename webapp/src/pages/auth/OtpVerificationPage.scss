@@ -1,0 +1,48 @@
+.otp-verification-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f4f4;
+}
+
+.otp-container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 2rem 1.5rem;
+  max-width: 420px;
+  margin: 2rem auto;
+}
+
+.otp-form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.otp-form-wrapper {
+  width: 100%;
+}
+
+.otp-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.otp-subtitle {
+  font-size: 1rem;
+  color: #525252;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.otp-form {
+  width: 100%;
+}
+
+.verify-otp-button {
+  width: 100%;
+  margin-top: 1rem;
+}

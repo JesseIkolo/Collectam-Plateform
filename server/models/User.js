@@ -4,14 +4,27 @@ const bcrypt = require('bcryptjs');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
         trim: true,
         minlength: 2,
         maxlength: 50,
     },
+    nickname: {
+        type: String,
+        trim: true,
+        minlength: 3,
+        maxlength: 30
+    },
+    username: {
+        type: String,
+        trim: true,
+        unique: true,
+        minlength: 3,
+        maxlength: 30,
+        match: [/^[a-zA-Z0-9_.-]+$/, 'Nom d\'utilisateur invalide'],
+        // non requis, mais unique
+    },
     email: {
         type: String,
-        required: true,
         unique: true,
         lowercase: true,
         trim: true,
@@ -19,7 +32,6 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
         minlength: 8,
         select: false,
     },
@@ -30,6 +42,7 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
+        required: true,
         trim: true,
     },
     otp: {
@@ -41,6 +54,7 @@ const userSchema = new mongoose.Schema({
         default: true,
     },
     avatarUrl: String,
+<<<<<<< Updated upstream
     username: {
         type: String,
         required: true,
@@ -49,6 +63,12 @@ const userSchema = new mongoose.Schema({
         minlength: 3,
         maxlength: 30,
         match: [/^[a-zA-Z0-9_.-]+$/, 'Nom d\'utilisateur invalide'],
+=======
+    type: {
+        type: String,
+        enum: ['domestique', 'entreprise'],
+        default: 'domestique',
+>>>>>>> Stashed changes
     },
 }, { timestamps: true });
 

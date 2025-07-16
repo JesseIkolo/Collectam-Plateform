@@ -13,6 +13,7 @@ import {
 } from "@carbon/react";
 import { ArrowRight } from "@carbon/icons-react";
 import "./RegisterPage.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -23,7 +24,10 @@ export default function RegisterPage() {
     confirmPassword: "",
     countryCode: "+225",
     phone: "",
+    username: "",
   });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (field) => (e) => {
     setFormData((prev) => ({
@@ -32,9 +36,38 @@ export default function RegisterPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Register attempt:", formData);
+    setError("");
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.firstName + " " + formData.lastName,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          username: formData.username,
+          email: formData.email,
+          phone: formData.countryCode + formData.phone,
+          password: formData.password,
+          type: "domestique"
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.message || "Registration failed");
+        return;
+      }
+      // Redirige vers la page de vérification OTP
+      navigate("/otp", { state: { email: formData.email } });
+    } catch (err) {
+      setError("Network error");
+    }
   };
 
   return (
@@ -80,6 +113,17 @@ export default function RegisterPage() {
                     />
                   </FormGroup>
                 </div>
+
+                <FormGroup legendText="">
+                  <TextInput
+                    id="username"
+                    labelText="Nom d'utilisateur"
+                    placeholder="Choisissez un nom d'utilisateur (lettres, chiffres, . _ -)"
+                    value={formData.username}
+                    onChange={handleChange("username")}
+                    className="form-input"
+                  />
+                </FormGroup>
 
                 <FormGroup legendText="">
                   <TextInput
@@ -181,6 +225,8 @@ export default function RegisterPage() {
                   </Link>
                 </div>
               </div>
+
+              {error && <div className="error-message">{error}</div>}
             </div>
           </div>
         </Column>

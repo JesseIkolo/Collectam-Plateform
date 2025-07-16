@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import LoginPage from './pages/admin/LoginPage';
 import RegisterPage from './pages/admin/RegisterPage';
 import DashboardHome from './pages/admin/DashboardHome';
@@ -19,6 +19,8 @@ import AdministrationPage from './pages/admin/AdministrationPage';
 import CartePage from './pages/admin/CartePage';
 import CollecteursPage from './pages/admin/CollecteursPage';
 import AboutPage from './pages/admin/AboutPage';
+import OtpPage from './pages/admin/OtpPage';
+import Layout from './components/Layout';
 import './index.scss';
 
 function isAuthenticated() {
@@ -26,7 +28,14 @@ function isAuthenticated() {
 }
 
 function ProtectedRoute({ children }) {
+    const location = useLocation();
+    const token = localStorage.getItem('token');
+    console.log('Token actuel dans localStorage :', token);
     if (!isAuthenticated()) {
+        // Stocke la page demandée pour redirection après login, seulement si elle n'existe pas déjà
+        if (!localStorage.getItem('redirectAfterLogin')) {
+            localStorage.setItem('redirectAfterLogin', location.pathname);
+        }
         return <Navigate to="/login" replace />;
     }
     return children;
@@ -39,23 +48,26 @@ export default function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/about" element={<AboutPage />} />
-                {/* Toutes les routes admin sont protégées */}
-                <Route path="/admin/dashboard" element={<ProtectedRoute><DashboardHome /></ProtectedRoute>} />
-                <Route path="/admin/usagers" element={<ProtectedRoute><UsagersPage /></ProtectedRoute>} />
-                <Route path="/admin/vehicules" element={<ProtectedRoute><VehiculesPage /></ProtectedRoute>} />
-                <Route path="/admin/signalement" element={<ProtectedRoute><SignalementPage /></ProtectedRoute>} />
-                <Route path="/admin/signalements" element={<ProtectedRoute><SignalementsPage /></ProtectedRoute>} />
-                <Route path="/admin/points-depots" element={<ProtectedRoute><PointsDepotsPage /></ProtectedRoute>} />
-                <Route path="/admin/precollecteurs" element={<ProtectedRoute><PrecolecteursPage /></ProtectedRoute>} />
-                <Route path="/admin/points-collecte" element={<ProtectedRoute><PointsCollectePage /></ProtectedRoute>} />
-                <Route path="/admin/missions" element={<ProtectedRoute><MissionsPage /></ProtectedRoute>} />
-                <Route path="/admin/notifications" element={<ProtectedRoute><NotificationsPage /></ProtectedRoute>} />
-                <Route path="/admin/parrainage" element={<ProtectedRoute><ParrainagePage /></ProtectedRoute>} />
-                <Route path="/admin/dechets" element={<ProtectedRoute><DechetsPage /></ProtectedRoute>} />
-                <Route path="/admin/langues" element={<ProtectedRoute><LanguesPage /></ProtectedRoute>} />
-                <Route path="/admin/administration" element={<ProtectedRoute><AdministrationPage /></ProtectedRoute>} />
-                <Route path="/admin/carte" element={<ProtectedRoute><CartePage /></ProtectedRoute>} />
-                <Route path="/admin/collecteurs" element={<ProtectedRoute><CollecteursPage /></ProtectedRoute>} />
+                <Route path="/otp" element={<OtpPage />} />
+                {/* Toutes les routes admin sont protégées et utilisent Layout */}
+                <Route path="/admin" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+                    <Route path="dashboard" element={<DashboardHome />} />
+                    <Route path="usagers" element={<UsagersPage />} />
+                    <Route path="vehicules" element={<VehiculesPage />} />
+                    <Route path="signalement" element={<SignalementPage />} />
+                    <Route path="signalements" element={<SignalementsPage />} />
+                    <Route path="points-depots" element={<PointsDepotsPage />} />
+                    <Route path="precollecteurs" element={<PrecolecteursPage />} />
+                    <Route path="points-collecte" element={<PointsCollectePage />} />
+                    <Route path="missions" element={<MissionsPage />} />
+                    <Route path="notifications" element={<NotificationsPage />} />
+                    <Route path="parrainage" element={<ParrainagePage />} />
+                    <Route path="dechets" element={<DechetsPage />} />
+                    <Route path="langues" element={<LanguesPage />} />
+                    <Route path="administration" element={<AdministrationPage />} />
+                    <Route path="carte" element={<CartePage />} />
+                    <Route path="collecteurs" element={<CollecteursPage />} />
+                </Route>
                 {/* Redirection par défaut */}
                 <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>

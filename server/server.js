@@ -57,6 +57,18 @@ mongoose.connect(mongoURI, {
 const mainRoutes = require('./routes');
 app.use('/api', mainRoutes);
 
+// Servir le frontend React en production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../webapp/build')));
+    app.get('*', (req, res, next) => {
+        if (!req.path.startsWith('/api')) {
+            res.sendFile(path.join(__dirname, '../webapp/build', 'index.html'));
+        } else {
+            next();
+        }
+    });
+}
+
 // Gestion des erreurs 404
 app.use((req, res, next) => {
     res.status(404).json({ message: 'Ressource non trouvée' });

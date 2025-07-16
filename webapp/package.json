@@ -2,10 +2,12 @@
   "name": "webapp",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@carbon/icons-react": "^11.62.0",
     "@carbon/react": "^1.85.1",
     "@carbon/styles": "^1.84.0",
+    "carbon-components": "^10.59.2",
     "cra-template-pwa": "2.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

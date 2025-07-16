@@ -6,11 +6,14 @@ const authController = require('../controllers/authController');
 
 // Schémas de validation
 const registerSchema = Joi.object({
-    name: Joi.string().min(2).max(50).required(),
+    firstName: Joi.string().min(2).max(50).required(),
+    lastName: Joi.string().min(2).max(50).required(),
+    name: Joi.string().min(2).max(100).required(),
     username: Joi.string().min(3).max(30).regex(/^[a-zA-Z0-9_.-]+$/).required(),
     email: Joi.string().email().required(),
     phone: Joi.string().required(),
     password: Joi.string().min(8).required(),
+    type: Joi.string().valid('domestique', 'entreprise').required(),
 });
 
 const loginSchema = Joi.object({

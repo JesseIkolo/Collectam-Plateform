@@ -3,7 +3,7 @@ const authService = require('../services/authService');
 
 exports.register = async (req, res) => {
     try {
-        const { name, email, password, phone, username } = req.body;
+        const { name, email, password, phone, username, firstName, lastName } = req.body;
         // Vérifier unicité email, username, phone
         const existing = await User.findOne({
             $or: [
@@ -19,7 +19,15 @@ exports.register = async (req, res) => {
             else if (existing.phone === phone) field = 'numéro de téléphone';
             return res.status(409).json({ message: `Ce ${field} est déjà utilisé` });
         }
-        const user = new User({ name, email, password, phone, username });
+        const user = new User({
+            name,
+            email,
+            password,
+            phone,
+            username,
+            firstName,
+            lastName
+        });
         await user.save();
         await authService.generateOTP(user); // Envoi OTP
         res.status(201).json({ message: 'Inscription réussie. Vérifiez votre téléphone pour l’OTP.' });

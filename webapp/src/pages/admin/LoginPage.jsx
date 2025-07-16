@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Column,
@@ -12,15 +12,42 @@ import {
 } from "@carbon/react";
 import { ArrowRight } from "@carbon/icons-react";
 import "./LoginPage.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/admin/dashboard");
+    }
+  }, [navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Login attempt:", { username, password });
+    setError("");
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier: username, password }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.message || "Login failed");
+        return;
+      }
+      localStorage.setItem("token", data.token);
+      // Redirige vers la page demandée ou le dashboard
+      const redirectPath = localStorage.getItem("redirectAfterLogin") || "/admin/dashboard";
+      localStorage.removeItem("redirectAfterLogin");
+      navigate(redirectPath);
+    } catch (err) {
+      setError("Network error");
+    }
   };
 
   return (
@@ -74,7 +101,7 @@ export default function LoginPage() {
               </Form>
 
               <div className="alternative-logins">
-                <p className="alt-login-title">Alternativeffffff logins</p>
+                <p className="alt-login-title">Alternative logins</p>
                 <Button
                   kind="ghost"
                   size="lg"
@@ -102,6 +129,8 @@ export default function LoginPage() {
                   </Link>
                 </div>
               </div>
+
+              {error && <div className="error-message">{error}</div>}
             </div>
           </div>
         </Column>

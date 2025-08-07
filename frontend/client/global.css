@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+
   /**
    * Tailwind CSS theme
    * tailwind.config.ts expects the following color variables to be expressed as HSL values.
@@ -102,5 +103,26 @@
 
   body {
     @apply bg-background text-foreground;
+    cursor: none !important;
   }
+}
+
+/* Styles pour le curseur personnalisé LeafCursor */
+.leaf-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, filter 0.1s;
+  will-change: transform;
+}
+
+.leaf-cursor.hover {
+  filter: brightness(1.2) drop-shadow(0 0 6px #22c55e88);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.leaf-cursor.click {
+  filter: brightness(0.8) drop-shadow(0 0 8px #22c55eaa);
+  transform: translate(-50%, -50%) scale(0.9);
 }

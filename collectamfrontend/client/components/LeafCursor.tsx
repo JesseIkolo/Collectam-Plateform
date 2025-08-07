@@ -79,9 +79,8 @@ export default function LeafCursor() {
 
   return (
     <div
-      className={`leaf-cursor ${isHovering ? "hover" : ""} ${
-        isClicking ? "click" : ""
-      }`}
+      className={`leaf-cursor ${isHovering ? "hover" : ""} ${isClicking ? "click" : ""
+        }`}
       style={{
         left: position.x,
         top: position.y,

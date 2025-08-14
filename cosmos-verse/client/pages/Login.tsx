@@ -18,16 +18,11 @@ export default function Login() {
 
       {/* Header */}
       <header className="relative z-10 p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center">
           <Link to="/" className="flex items-center space-x-3 cursor-leaf hover:opacity-90 transition-opacity">
             <ArrowLeft className="w-6 h-6 text-white" />
             <ModernCollectamLogo size={40} />
             <span className="text-2xl font-bold text-white">Collectam</span>
-          </Link>
-          <Link to="/signup">
-            <Button variant="outline" className="cursor-leaf border-white text-white hover:bg-white hover:text-green-600 fluorescent-glow">
-              S'inscrire
-            </Button>
           </Link>
         </div>
       </header>
@@ -50,7 +45,7 @@ export default function Login() {
                   <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email</Label>
                   <div className="relative mt-1">
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <Input 
+                    <Input
                       id="email"
                       type="email"
                       placeholder="votre@email.com"
@@ -64,7 +59,7 @@ export default function Login() {
                   <Label htmlFor="password" className="text-sm font-medium text-gray-700">Mot de passe</Label>
                   <div className="relative mt-1">
                     <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <Input 
+                    <Input
                       id="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="••••••••"

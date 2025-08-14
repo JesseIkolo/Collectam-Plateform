@@ -19,16 +19,11 @@ export default function SignUp() {
 
       {/* Header */}
       <header className="relative z-10 p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center">
           <Link to="/" className="flex items-center space-x-3 cursor-leaf hover:opacity-90 transition-opacity">
             <ArrowLeft className="w-6 h-6 text-white" />
             <ModernCollectamLogo size={40} />
             <span className="text-2xl font-bold text-white">Collectam</span>
-          </Link>
-          <Link to="/login">
-            <Button variant="outline" className="cursor-leaf border-white text-white hover:bg-white hover:text-blue-600 fluorescent-glow">
-              Se connecter
-            </Button>
           </Link>
         </div>
       </header>
@@ -51,7 +46,7 @@ export default function SignUp() {
                   <Label htmlFor="firstName" className="text-sm font-medium text-gray-700">Prénom</Label>
                   <div className="relative mt-1">
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <Input 
+                    <Input
                       id="firstName"
                       type="text"
                       placeholder="John"
@@ -64,7 +59,7 @@ export default function SignUp() {
                   <Label htmlFor="lastName" className="text-sm font-medium text-gray-700">Nom</Label>
                   <div className="relative mt-1">
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <Input 
+                    <Input
                       id="lastName"
                       type="text"
                       placeholder="Doe"
@@ -79,7 +74,7 @@ export default function SignUp() {
                 <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email</Label>
                 <div className="relative mt-1">
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input 
+                  <Input
                     id="email"
                     type="email"
                     placeholder="john.doe@exemple.com"
@@ -93,7 +88,7 @@ export default function SignUp() {
                 <Label htmlFor="organization" className="text-sm font-medium text-gray-700">Organisation (optionnel)</Label>
                 <div className="relative mt-1">
                   <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input 
+                  <Input
                     id="organization"
                     type="text"
                     placeholder="Ville de Yaoundé"
@@ -106,7 +101,7 @@ export default function SignUp() {
                 <Label htmlFor="phone" className="text-sm font-medium text-gray-700">Téléphone</Label>
                 <div className="relative mt-1">
                   <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input 
+                  <Input
                     id="phone"
                     type="tel"
                     placeholder="+237 6 XX XX XX XX"
@@ -120,7 +115,7 @@ export default function SignUp() {
                 <Label htmlFor="password" className="text-sm font-medium text-gray-700">Mot de passe</Label>
                 <div className="relative mt-1">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input 
+                  <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="••••••••"
@@ -141,7 +136,7 @@ export default function SignUp() {
                 <Label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700">Confirmer le mot de passe</Label>
                 <div className="relative mt-1">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input 
+                  <Input
                     id="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="••••••••"

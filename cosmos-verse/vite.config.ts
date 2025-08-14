@@ -5,11 +5,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    host: "::",
     port: 3000,
-    fs: {
-      allow: ["./client", "./shared"],
-    },
   },
   build: {
     outDir: "dist",

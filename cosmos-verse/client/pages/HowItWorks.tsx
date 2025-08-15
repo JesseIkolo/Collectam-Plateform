@@ -45,11 +45,11 @@ export default function HowItWorks() {
             </Link>
             <Link to="/signup">
               <Button className="bg-green-600 hover:bg-green-700 fluorescent-glow transition-all duration-300 transform hover:scale-105 h-10 px-6 text-sm font-medium">S'inscrire</Button>
-          </Link>
+            </Link>
           </div>
         </div>
       </header>
-      
+
       {/* Hero Section - Design System Uber Base */}
       <section className="pt-32 pb-24">
         <div className="container mx-auto px-6">
@@ -59,8 +59,8 @@ export default function HowItWorks() {
               Processus simplifié
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-10 leading-tight tracking-tight">
-            Comment ça <span className="text-green-600">marche</span> ?
-          </h1>
+              Comment ça <span className="text-green-600">marche</span> ?
+            </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed tracking-wide">
               Découvrez en 4 étapes simples comment Collectam révolutionne la gestion des déchets urbains
               avec une technologie moderne et accessible à tous.
@@ -412,9 +412,9 @@ export default function HowItWorks() {
               <p className="text-gray-600 text-base leading-relaxed tracking-wide">
                 Communication en temps réel, partage d'informations et coordination
                 optimale entre tous les acteurs.
-          </p>
-        </div>
-      </div>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

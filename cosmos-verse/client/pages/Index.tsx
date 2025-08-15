@@ -32,25 +32,25 @@ import {
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-[#212121]">
       {/* Header - Design System Uber Base */}
       <header className="fixed top-0 w-full bg-white/98 backdrop-blur-md border-b border-gray-200/50 z-50 shadow-sm">
         <div className="container mx-auto px-6 py-5 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
             <ModernCollectamLogo size={42} />
-            <span className="text-2xl font-bold text-green-600 tracking-tight">Collectam</span>
+            <span className="text-2xl font-bold tracking-tight">Collectam</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-10">
-            <Link to="/features" className="text-gray-600 hover:text-green-600 transition-all duration-200 font-medium text-base">Fonctionnalités</Link>
-            <Link to="/how-it-works" className="text-gray-600 hover:text-green-600 transition-all duration-200 font-medium text-base">Comment ça marche</Link>
-            <Link to="/contact" className="text-gray-600 hover:text-green-600 transition-all duration-200 font-medium text-base">Contact</Link>
+            <Link to="/features" className="font-medium text-base">Fonctionnalités</Link>
+            <Link to="/how-it-works" className="font-medium text-base">Comment ça marche</Link>
+            <Link to="/contact" className="font-medium text-base">Contact</Link>
           </nav>
           <div className="flex items-center space-x-4">
             <Link to="/login">
-              <Button variant="outline" className="border-gray-300 hover:border-green-500 hover:text-green-600 transition-all duration-200 h-10 px-6 text-sm font-medium">Se connecter</Button>
+              <Button variant="outline" className="border-gray-300 h-10 px-6 text-sm font-medium">Se connecter</Button>
             </Link>
             <Link to="/signup">
-              <Button className="bg-green-600 hover:bg-green-700 fluorescent-glow transition-all duration-300 transform hover:scale-105 h-10 px-6 text-sm font-medium">S'inscrire</Button>
+              <Button className="h-10 px-6 text-sm font-medium bg-white border border-gray-300 text-[#212121]">S'inscrire</Button>
             </Link>
           </div>
         </div>

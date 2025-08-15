@@ -1,77 +1,144 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ModernCollectamLogo } from "@/components/ui/modern-collectam-logo";
 import { Link } from "react-router-dom";
-import { Home, ArrowLeft } from "lucide-react";
+import { Home, ArrowLeft, Search, AlertTriangle } from "lucide-react";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname,
-    );
-  }, [location.pathname]);
-
+export default function NotFound() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-green-50/30 to-blue-50/30">
-      {/* Header */}
+      {/* Header - Design System Uber Base */}
       <header className="fixed top-0 w-full bg-white/98 backdrop-blur-md border-b border-gray-200/50 z-50 shadow-sm">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 cursor-leaf hover:opacity-90 transition-opacity">
+        <div className="container mx-auto px-6 py-5 flex items-center justify-between">
+          <Link to="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
             <ModernCollectamLogo size={42} />
-            <span className="text-2xl font-bold text-green-600">Collectam</span>
+            <span className="text-2xl font-bold text-green-600 tracking-tight">Collectam</span>
           </Link>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/features" className="text-gray-600 hover:text-green-600 transition-all duration-200 cursor-leaf font-medium">Fonctionnalités</Link>
-            <Link to="/how-it-works" className="text-gray-600 hover:text-green-600 transition-all duration-200 cursor-leaf font-medium">Comment ça marche</Link>
-            <Link to="/contact" className="text-gray-600 hover:text-green-600 transition-all duration-200 cursor-leaf font-medium">Contact</Link>
+          <nav className="hidden md:flex items-center space-x-10">
+            <Link to="/features" className="text-gray-600 hover:text-green-600 transition-all duration-200 font-medium text-base">Fonctionnalités</Link>
+            <Link to="/how-it-works" className="text-gray-600 hover:text-green-600 transition-all duration-200 font-medium text-base">Comment ça marche</Link>
+            <Link to="/contact" className="text-gray-600 hover:text-green-600 transition-all duration-200 font-medium text-base">Contact</Link>
           </nav>
           <div className="flex items-center space-x-4">
             <Link to="/login">
-              <Button variant="outline" className="cursor-leaf border-gray-300 hover:border-green-500 hover:text-green-600 transition-all duration-200">Se connecter</Button>
+              <Button variant="outline" className="border-gray-300 hover:border-green-500 hover:text-green-600 transition-all duration-200 h-10 px-6 text-sm font-medium">Se connecter</Button>
             </Link>
             <Link to="/signup">
-              <Button className="bg-green-600 hover:bg-green-700 cursor-leaf fluorescent-glow transition-all duration-300 transform hover:scale-105">S'inscrire</Button>
+              <Button className="bg-green-600 hover:bg-green-700 fluorescent-glow transition-all duration-300 transform hover:scale-105 h-10 px-6 text-sm font-medium">S'inscrire</Button>
             </Link>
           </div>
         </div>
       </header>
 
-      {/* 404 Content */}
-      <div className="container mx-auto px-6 pt-32 pb-20">
-        <div className="flex items-center justify-center min-h-[calc(100vh-200px)]">
-          <div className="text-center max-w-2xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-white/20">
-              <div className="text-8xl font-black text-gray-300 mb-6">404</div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">Page introuvable</h1>
-              <p className="text-xl text-gray-600 mb-8">
-                Oups ! La page que vous recherchez n'existe pas ou a été déplacée.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/">
-                  <Button className="bg-green-600 hover:bg-green-700 cursor-leaf fluorescent-glow transition-all duration-300 transform hover:scale-105">
-                    <Home className="w-5 h-5 mr-2" />
-                    Retour à l'accueil
-                  </Button>
-                </Link>
-                <Button
-                  variant="outline"
-                  onClick={() => window.history.back()}
-                  className="cursor-leaf border-gray-300 hover:border-green-500 hover:text-green-600 transition-all duration-200"
-                >
-                  <ArrowLeft className="w-5 h-5 mr-2" />
-                  Page précédente
+      {/* 404 Content - Design System Uber Base */}
+      <div className="container mx-auto px-6 pt-32 pb-24">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* 404 Icon and Title */}
+          <div className="mb-16">
+            <div className="w-32 h-32 mx-auto bg-gradient-to-br from-red-100 to-orange-100 rounded-full flex items-center justify-center mb-8 shadow-xl">
+              <AlertTriangle className="w-16 h-16 text-red-600" />
+            </div>
+            <h1 className="text-6xl md:text-8xl font-bold text-gray-900 mb-6 tracking-tight">
+              4<span className="text-red-600">0</span>4
+            </h1>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
+              Page introuvable
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed tracking-wide">
+              Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+              Utilisez les liens ci-dessous pour naviguer sur notre site.
+            </p>
+          </div>
+
+          {/* Action Buttons - Design System Uber Base */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <Link to="/">
+              <Button size="lg" className="bg-green-600 hover:bg-green-700 px-8 py-5 text-lg font-semibold fluorescent-glow transition-all duration-300 transform hover:scale-110 h-14">
+                <Home className="w-5 h-5 mr-3" />
+                Retour à l'accueil
+              </Button>
+            </Link>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => window.history.back()}
+              className="px-8 py-5 text-lg border-2 border-gray-300 hover:border-green-500 hover:text-green-600 font-semibold transition-all duration-300 transform hover:scale-110 h-14"
+            >
+              <ArrowLeft className="w-5 h-5 mr-3" />
+              Page précédente
+            </Button>
+          </div>
+
+          {/* Quick Links - Design System Uber Base */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-white/20">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 tracking-tight">
+              Pages populaires
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link
+                to="/features"
+                className="group p-6 bg-gray-50 hover:bg-green-50 rounded-2xl transition-all duration-300 transform hover:scale-105"
+              >
+                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors">
+                  <Search className="w-6 h-6 text-green-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 text-base mb-2">Fonctionnalités</h4>
+                <p className="text-gray-600 text-sm leading-relaxed tracking-wide">
+                  Découvrez nos outils intelligents
+                </p>
+              </Link>
+
+              <Link
+                to="/how-it-works"
+                className="group p-6 bg-gray-50 hover:bg-blue-50 rounded-2xl transition-all duration-300 transform hover:scale-105"
+              >
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
+                  <Search className="w-6 h-6 text-blue-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 text-base mb-2">Comment ça marche</h4>
+                <p className="text-gray-600 text-sm leading-relaxed tracking-wide">
+                  Apprenez à utiliser Collectam
+                </p>
+              </Link>
+
+              <Link
+                to="/contact"
+                className="group p-6 bg-gray-50 hover:bg-purple-50 rounded-2xl transition-all duration-300 transform hover:scale-105"
+              >
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
+                  <Search className="w-6 h-6 text-purple-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 text-base mb-2">Contact</h4>
+                <p className="text-gray-600 text-sm leading-relaxed tracking-wide">
+                  Contactez notre équipe
+                </p>
+              </Link>
+            </div>
+          </div>
+
+          {/* Help Section - Design System Uber Base */}
+          <div className="mt-16 bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-10">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 tracking-tight">
+              Besoin d'aide ?
+            </h3>
+            <p className="text-gray-600 text-base mb-8 max-w-2xl mx-auto tracking-wide">
+              Si vous ne trouvez pas ce que vous cherchez, notre équipe est là pour vous aider.
+              N'hésitez pas à nous contacter.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact">
+                <Button className="bg-green-600 hover:bg-green-700 px-8 py-4 font-semibold transition-all duration-300 transform hover:scale-110 h-12">
+                  Nous contacter
                 </Button>
-              </div>
+              </Link>
+              <Link to="/help">
+                <Button variant="outline" className="px-8 py-4 border-2 border-green-500 hover:bg-green-50 font-semibold transition-all duration-300 transform hover:scale-110 h-12">
+                  Centre d'aide
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default NotFound;
+}

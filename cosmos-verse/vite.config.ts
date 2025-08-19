@@ -6,6 +6,9 @@ import path from "path";
 export default defineConfig({
   server: {
     port: 3000,
+    fs: {
+      allow: ["./client", "./shared", "./node_modules"],
+    },
   },
   build: {
     outDir: "dist",
